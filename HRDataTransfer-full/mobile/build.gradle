@@ -33,16 +33,20 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(8))
-        }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=all-compatibility']
+    }
+    buildFeatures {
+        compose True
     }
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.7'
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+    packageingOptions {
+        resourses {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
